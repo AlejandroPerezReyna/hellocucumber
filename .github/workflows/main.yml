@@ -18,7 +18,7 @@ jobs:
       - run: |
           echo "scenatio tag name: ${{ github.event.inputs.scenarioTag }}"
   build:
-    runs-on: ubuntu-latest-aa
+    runs-on: ubuntu-latest
     environment: Dev
     #env:
     #  AZURE_CONFIG_DIR: /opt/apps/homes/EntDevOps/actions_runner/_work/azconfig
@@ -33,6 +33,5 @@ jobs:
         settings-path: $GITHUB_WORKSPACE
    
     - name: Build with Maven
-      run: |
-        cd SPOGCME
+      run: 
         mvn clean test -Dcucumber.filter.tags=@${{ github.event.inputs.scenarioTag }}
