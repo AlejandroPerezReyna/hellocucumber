@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo "scenatio tag name: ${{ github.event.inputs.scenarioTag }}"
+          echo "scenario tag name: ${{ github.event.inputs.choice }}"
   build:
     runs-on: ubuntu-latest
     environment: Dev
