@@ -7,9 +7,15 @@ run-name: Individual Scenario Test for Dev Environment
 on:
   workflow_dispatch:
     inputs:
-      scenarioTag:
+      choice:
+        type: choice
         description: 'Scenario tag'
         required: true
+        options:
+        - is_it_friday_yet
+        - today_is_friday
+        - today_is_sunday
+        - today_is_anything_else
 
 jobs:
   printInputs:
