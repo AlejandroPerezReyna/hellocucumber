@@ -1,0 +1,38 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+name: Individual Scenarios
+run-name: Individual Scenario Test for Dev Environment
+
+on:
+  workflow_dispatch:
+    inputs:
+      scenarioTag:
+        description: 'Scenario tag'
+        required: true
+
+jobs:
+  printInputs:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Log level: ${{ github.event.inputs.scenarioTag }}"
+  build:
+    runs-on: ubuntu-latest-aa
+    environment: Dev
+    #env:
+    #  AZURE_CONFIG_DIR: /opt/apps/homes/EntDevOps/actions_runner/_work/azconfig
+    steps:
+    
+    - name: Set up JDK 21
+      uses: actions/setup-java@v3
+      with:
+        java-version: '21'
+        distribution: 'zulu'
+        cache: maven
+        settings-path: $GITHUB_WORKSPACE
+   
+    - name: Build with Maven
+      run: |
+        cd SPOGCME
+        mvn clean test -Dcucumber.filter.tags=@${{ github.event.inputs.scenarioTag }}
