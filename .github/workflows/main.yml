@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo "Log level: ${{ github.event.inputs.scenarioTag }}"
+          echo "scenatio tag name: ${{ github.event.inputs.scenarioTag }}"
   build:
     runs-on: ubuntu-latest-aa
     environment: Dev
