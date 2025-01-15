@@ -23,7 +23,8 @@ jobs:
     #env:
     #  AZURE_CONFIG_DIR: /opt/apps/homes/EntDevOps/actions_runner/_work/azconfig
     steps:
-    
+    - name: Check out Repository
+      uses: actions/checkout@v4
     - name: Set up JDK 21
       uses: actions/setup-java@v3
       with:
