@@ -41,4 +41,4 @@ jobs:
    
     - name: Build with Maven
       run: |
-        mvn clean test -Dcucumber.filter.tags=@${{ github.event.inputs.scenarioTag }}
+        mvn clean test -Dcucumber.filter.tags=@${{ github.event.inputs.choice }}
